@@ -10,7 +10,9 @@ import UIKit
 class AnnouncmentCell: UITableViewCell {
     var safeArea: UILayoutGuide!
     var thumbImageView = UIImageView()
+    
     let titleLabel = UILabel()
+    let priceLabel = UILabel()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -27,6 +29,7 @@ class AnnouncmentCell: UITableViewCell {
         safeArea = layoutMarginsGuide
         setupImageView()
         setupNameLabel()
+        setupPriceLabel()
     }
     
     
@@ -47,5 +50,15 @@ class AnnouncmentCell: UITableViewCell {
         titleLabel.translatesAutoresizingMaskIntoConstraints                                              = false
         titleLabel.leadingAnchor.constraint(equalTo: thumbImageView.trailingAnchor, constant: 5).isActive = true
         titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 5).isActive                         = true
+        titleLabel.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: 5).isActive      = true
+        titleLabel.numberOfLines = 0
+    }
+    
+    func setupPriceLabel() {
+        addSubview(priceLabel)
+        
+        priceLabel.translatesAutoresizingMaskIntoConstraints                                     = false
+        priceLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor).isActive          = true
+        priceLabel.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor).isActive  = true
     }
 }
