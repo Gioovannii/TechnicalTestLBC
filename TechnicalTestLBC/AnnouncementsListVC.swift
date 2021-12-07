@@ -13,19 +13,18 @@ class AnnouncementsListVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        configureTableView()
     }
     
     func configureTableView() {
         view.addSubview(tableView)
-            // set delegates
-            //set row and height
+        setTableViewDelegates()
+        tableView.rowHeight = 50
             // Register cells
-            // set contraints
+        tableView.pin(to: view)
     }
     
-    func setTableViewDelegaates() {
+    func setTableViewDelegates() {
         tableView.dataSource = self
         tableView.delegate = self
     }

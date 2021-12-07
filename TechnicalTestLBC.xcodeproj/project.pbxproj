@@ -101,7 +101,6 @@
 			children = (
 				7B61700D275EECDA00BEDBD5 /* Extension - Utilities */,
 				7B617010275EEFD500BEDBD5 /* Supported Files */,
-				7B616FEB275EECB000BEDBD5 /* Info.plist */,
 				7B617011275EF3E600BEDBD5 /* AnnouncementsListVC.swift */,
 			);
 			path = TechnicalTestLBC;
@@ -135,6 +134,7 @@
 		7B617010275EEFD500BEDBD5 /* Supported Files */ = {
 			isa = PBXGroup;
 			children = (
+				7B616FEB275EECB000BEDBD5 /* Info.plist */,
 				7B616FDD275EECAE00BEDBD5 /* AppDelegate.swift */,
 				7B616FDF275EECAE00BEDBD5 /* SceneDelegate.swift */,
 				7B616FE6275EECB000BEDBD5 /* Assets.xcassets */,
