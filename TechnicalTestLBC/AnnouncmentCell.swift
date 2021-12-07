@@ -8,58 +8,44 @@
 import UIKit
 
 class AnnouncmentCell: UITableViewCell {
-
-    var urlImageView = UIImageView()
-    var priceLabel = UILabel()
+    var safeArea: UILayoutGuide!
+    var thumbImageView = UIImageView()
+    let titleLabel = UILabel()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        addSubview(urlImageView)
-        addSubview(priceLabel)
-        
-        configureUrlImageView()
-        configureUrlImageView()
-        
-        setImageConstraints()
-        setPriceLabelConstraints()
+        setupView()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func set(response: Response) {
-//        urlImageView.image = UIImageView().load(url: URL(string: response.imagesURL.small!)!)
-        priceLabel.text = "\(response.price)"
-    
-        
-        
-    }
-    
-    func configureUrlImageView() {
-        urlImageView.layer.cornerRadius = 10
-        urlImageView.clipsToBounds = true
-    }
-    
-    func configurePriceLabel() {
-        priceLabel.numberOfLines = 1
-        priceLabel.adjustsFontSizeToFitWidth = true
-    }
-    
-    func setImageConstraints() {
-        urlImageView.translatesAutoresizingMaskIntoConstraints                                             = false
-        urlImageView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive                             = true
-        urlImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12).isActive               = true
-        urlImageView.heightAnchor.constraint(equalToConstant: 80).isActive                                 = true
-        urlImageView.widthAnchor.constraint(equalTo: urlImageView.heightAnchor, multiplier: 16/9).isActive = true
+    // MARK: - Setup
 
+    func setupView() {
+        safeArea = layoutMarginsGuide
+        setupImageView()
+        setupNameLabel()
     }
     
-    func setPriceLabelConstraints() {
-        priceLabel.translatesAutoresizingMaskIntoConstraints                                                = false
-        priceLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive                                = true
-        priceLabel.leadingAnchor.constraint(equalTo: urlImageView.trailingAnchor, constant: 20).isActive    = true
-        priceLabel.heightAnchor.constraint(equalToConstant: 80).isActive                                    = true
-        priceLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12).isActive               = true
+    
+    func setupImageView() {
+        addSubview(thumbImageView)
+        
+        thumbImageView.translatesAutoresizingMaskIntoConstraints                            = false
+        thumbImageView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor).isActive   = true
+        thumbImageView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive       = true
+        thumbImageView.widthAnchor.constraint(equalToConstant: 80).isActive                 = true
+        thumbImageView.heightAnchor.constraint(equalToConstant: 80).isActive                = true
+        thumbImageView.backgroundColor = .red
+    }
+    
+    func setupNameLabel() {
+        addSubview(titleLabel)
+        
+        titleLabel.translatesAutoresizingMaskIntoConstraints                                              = false
+        titleLabel.leadingAnchor.constraint(equalTo: thumbImageView.trailingAnchor, constant: 5).isActive = true
+        titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 5).isActive                         = true
     }
 }
