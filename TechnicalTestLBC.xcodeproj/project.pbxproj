@@ -16,6 +16,9 @@
 		7B617001275EECB000BEDBD5 /* TechnicalTestLBCUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B617000275EECB000BEDBD5 /* TechnicalTestLBCUITestsLaunchTests.swift */; };
 		7B61700F275EED1300BEDBD5 /* UIView + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B61700E275EED1300BEDBD5 /* UIView + Ext.swift */; };
 		7B617012275EF3E600BEDBD5 /* AnnouncementsListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B617011275EF3E600BEDBD5 /* AnnouncementsListVC.swift */; };
+		7B617014275EF89700BEDBD5 /* AnnouncmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B617013275EF89700BEDBD5 /* AnnouncmentCell.swift */; };
+		7B617016275F01F300BEDBD5 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B617015275F01F300BEDBD5 /* Response.swift */; };
+		7B617019275F2EE000BEDBD5 /* UIImage + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B617018275F2EE000BEDBD5 /* UIImage + Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,9 @@
 		7B617000275EECB000BEDBD5 /* TechnicalTestLBCUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TechnicalTestLBCUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		7B61700E275EED1300BEDBD5 /* UIView + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Ext.swift"; sourceTree = "<group>"; };
 		7B617011275EF3E600BEDBD5 /* AnnouncementsListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementsListVC.swift; sourceTree = "<group>"; };
+		7B617013275EF89700BEDBD5 /* AnnouncmentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncmentCell.swift; sourceTree = "<group>"; };
+		7B617015275F01F300BEDBD5 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		7B617018275F2EE000BEDBD5 /* UIImage + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage + Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,9 +105,12 @@
 		7B616FDC275EECAE00BEDBD5 /* TechnicalTestLBC */ = {
 			isa = PBXGroup;
 			children = (
+				7B617017275F020000BEDBD5 /* Model */,
 				7B61700D275EECDA00BEDBD5 /* Extension - Utilities */,
-				7B617010275EEFD500BEDBD5 /* Supported Files */,
+				7B616FEB275EECB000BEDBD5 /* Info.plist */,
 				7B617011275EF3E600BEDBD5 /* AnnouncementsListVC.swift */,
+				7B617013275EF89700BEDBD5 /* AnnouncmentCell.swift */,
+				7B617010275EEFD500BEDBD5 /* Supported Files */,
 			);
 			path = TechnicalTestLBC;
 			sourceTree = "<group>";
@@ -127,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				7B61700E275EED1300BEDBD5 /* UIView + Ext.swift */,
+				7B617018275F2EE000BEDBD5 /* UIImage + Ext.swift */,
 			);
 			path = "Extension - Utilities";
 			sourceTree = "<group>";
@@ -134,13 +144,20 @@
 		7B617010275EEFD500BEDBD5 /* Supported Files */ = {
 			isa = PBXGroup;
 			children = (
-				7B616FEB275EECB000BEDBD5 /* Info.plist */,
 				7B616FDD275EECAE00BEDBD5 /* AppDelegate.swift */,
 				7B616FDF275EECAE00BEDBD5 /* SceneDelegate.swift */,
 				7B616FE6275EECB000BEDBD5 /* Assets.xcassets */,
 				7B616FE8275EECB000BEDBD5 /* LaunchScreen.storyboard */,
 			);
 			path = "Supported Files";
+			sourceTree = "<group>";
+		};
+		7B617017275F020000BEDBD5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7B617015275F01F300BEDBD5 /* Response.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -273,9 +290,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B617019275F2EE000BEDBD5 /* UIImage + Ext.swift in Sources */,
 				7B616FDE275EECAE00BEDBD5 /* AppDelegate.swift in Sources */,
 				7B61700F275EED1300BEDBD5 /* UIView + Ext.swift in Sources */,
 				7B616FE0275EECAE00BEDBD5 /* SceneDelegate.swift in Sources */,
+				7B617016275F01F300BEDBD5 /* Response.swift in Sources */,
+				7B617014275EF89700BEDBD5 /* AnnouncmentCell.swift in Sources */,
 				7B617012275EF3E600BEDBD5 /* AnnouncementsListVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -449,7 +469,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5K8DY798Z4;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "TechnicalTestLBC/Supported Files/Info.plist";
+				INFOPLIST_FILE = TechnicalTestLBC/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -478,7 +498,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5K8DY798Z4;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "TechnicalTestLBC/Supported Files/Info.plist";
+				INFOPLIST_FILE = TechnicalTestLBC/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
