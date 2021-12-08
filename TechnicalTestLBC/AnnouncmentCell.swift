@@ -37,7 +37,6 @@ class AnnouncmentCell: UITableViewCell {
         setupIsUrgentLabel()
     }
     
-    
     func setupImageView() {
         addSubview(thumbImageView)
         
@@ -71,16 +70,17 @@ class AnnouncmentCell: UITableViewCell {
         addSubview(categoryLabel)
         
         categoryLabel.translatesAutoresizingMaskIntoConstraints = false
-        categoryLabel.topAnchor.constraint(equalTo: safeArea.topAnchor).isActive = true
+        categoryLabel.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor).isActive = true
         categoryLabel.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: 5).isActive = true
-        
     }
     
     func setupIsUrgentLabel() {
         addSubview(isUrgentLabel)
         
         isUrgentLabel.translatesAutoresizingMaskIntoConstraints = false
-        isUrgentLabel.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor).isActive = true
-        isUrgentLabel.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: 5).isActive = true
+        isUrgentLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10).isActive = true
+        isUrgentLabel.leadingAnchor.constraint(equalTo: priceLabel.trailingAnchor, constant: 10).isActive = true
     }
+    
+  
 }
