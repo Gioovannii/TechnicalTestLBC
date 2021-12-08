@@ -55,9 +55,12 @@ extension AnnouncementsListVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Cells.AnnouncementCell, for: indexPath)
-        //
-        let item = result[indexPath.row].title
-        cell.textLabel?.text = item
+        let item = result[indexPath.row]
+        
+        guard let itemCell = cell as? AnnouncmentCell else { return cell }
+        
+        itemCell.titleLabel.text = item.title
+        itemCell.priceLabel.text = "\(item.price.stringWithoutZeroFraction) €"
         return cell
         
     }
