@@ -45,7 +45,9 @@ class AnnouncmentCell: UITableViewCell {
         thumbImageView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive     = true
         thumbImageView.widthAnchor.constraint(equalToConstant: 80).isActive               = true
         thumbImageView.heightAnchor.constraint(equalToConstant: 80).isActive              = true
-        thumbImageView.backgroundColor = .red
+        thumbImageView.layer.cornerRadius = 10
+        thumbImageView.layer.borderWidth = 1
+        thumbImageView.layer.borderColor = UIColor.gray.cgColor
     }
     
     func setupNameLabel() {
