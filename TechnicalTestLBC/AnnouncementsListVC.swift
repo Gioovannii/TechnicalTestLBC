@@ -39,6 +39,7 @@ class AnnouncementsListVC: UIViewController {
     func fetchData() -> ([Response]) -> () {
         let anonymousFunction = { (fetchedResults: [Response]) in
             DispatchQueue.main.async {
+                
                 self.result = fetchedResults
                 self.tableView.reloadData()
             }
@@ -87,6 +88,8 @@ extension AnnouncementsListVC: UITableViewDataSource {
         
         guard let itemCell = cell as? AnnouncmentCell else { return cell }
         
+        
+        itemCell.thumbImageView.downloaded(from: item.imagesURL.thumb!)
         itemCell.titleLabel.text = item.title
         itemCell.priceLabel.text = "\(item.price.stringWithoutZeroFraction) €"
         itemCell.isUrgentLabel.text = item.isUrgent == true ? "Urgent" : ""
@@ -116,7 +119,6 @@ extension AnnouncementsListVC {
                 print("Couldn't decode json")
                 return
             }
-            
             onCompletion(decodedResponse)
         }
         
