@@ -9,10 +9,13 @@ import UIKit
 
 class AnnouncmentCell: UITableViewCell {
     var safeArea: UILayoutGuide!
+    
     var thumbImageView = UIImageView()
     
     let titleLabel = UILabel()
     let priceLabel = UILabel()
+    let categoryLabel = UILabel()
+    let isUrgentLabel = UILabel()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -60,5 +63,15 @@ class AnnouncmentCell: UITableViewCell {
         priceLabel.translatesAutoresizingMaskIntoConstraints                                     = false
         priceLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor).isActive          = true
         priceLabel.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor).isActive  = true
+    }
+    
+    func setupCategoryLabel() {
+        addSubview(categoryLabel)
+        
+    }
+    
+    func setupIsUrgentLabel() {
+        addSubview(isUrgentLabel)
+        
     }
 }
