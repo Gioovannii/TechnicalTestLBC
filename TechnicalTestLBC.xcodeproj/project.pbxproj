@@ -21,6 +21,7 @@
 		7B617019275F2EE000BEDBD5 /* UIImage + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B617018275F2EE000BEDBD5 /* UIImage + Ext.swift */; };
 		7B99208D27605343006E3EA5 /* Double + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B99208C27605343006E3EA5 /* Double + Ext.swift */; };
 		7B99208F27605753006E3EA5 /* Date formatter + String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B99208E27605753006E3EA5 /* Date formatter + String.swift */; };
+		7B99209127609342006E3EA5 /* UIImageView + URLImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B99209027609342006E3EA5 /* UIImageView + URLImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		7B617018275F2EE000BEDBD5 /* UIImage + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage + Ext.swift"; sourceTree = "<group>"; };
 		7B99208C27605343006E3EA5 /* Double + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double + Ext.swift"; sourceTree = "<group>"; };
 		7B99208E27605753006E3EA5 /* Date formatter + String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date formatter + String.swift"; sourceTree = "<group>"; };
+		7B99209027609342006E3EA5 /* UIImageView + URLImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView + URLImage.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +145,7 @@
 				7B617018275F2EE000BEDBD5 /* UIImage + Ext.swift */,
 				7B99208C27605343006E3EA5 /* Double + Ext.swift */,
 				7B99208E27605753006E3EA5 /* Date formatter + String.swift */,
+				7B99209027609342006E3EA5 /* UIImageView + URLImage.swift */,
 			);
 			path = "Extension - Utilities";
 			sourceTree = "<group>";
@@ -296,6 +299,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B99209127609342006E3EA5 /* UIImageView + URLImage.swift in Sources */,
 				7B617019275F2EE000BEDBD5 /* UIImage + Ext.swift in Sources */,
 				7B616FDE275EECAE00BEDBD5 /* AppDelegate.swift in Sources */,
 				7B61700F275EED1300BEDBD5 /* UIView + Ext.swift in Sources */,
