@@ -43,7 +43,6 @@ class AnnouncementsListVC: UIViewController {
                 self.tableView.reloadData()
             }
         }
-        
         return anonymousFunction
     }
 }
@@ -61,6 +60,7 @@ extension AnnouncementsListVC: UITableViewDataSource {
         
         itemCell.titleLabel.text = item.title
         itemCell.priceLabel.text = "\(item.price.stringWithoutZeroFraction) €"
+        itemCell.isUrgentLabel.text = item.isUrgent == true ? "Urgent" : ""
         return cell
         
     }
