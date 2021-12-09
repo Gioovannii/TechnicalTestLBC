@@ -99,8 +99,17 @@ extension AnnouncementsListVC:UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let announcement = self.result[indexPath.row]
         let announcementDetailVC = AnnouncementDetailVC()
+        let dateFromString = DateFormatter.getDateFromString(date: announcement.creationDate)
+        let dateFromDate = DateFormatter.getDateToString(from: dateFromString)
+        
         announcementDetailVC.announcement = announcement
         announcementDetailVC.imageThumb.downloaded(from: announcement.imagesURL.thumb!)
+        announcementDetailVC.titleLabel.text = announcement.title
+        announcementDetailVC.descriptionLabel.text = announcement.annoncementDescription
+        announcementDetailVC.priceLabel.text = "\(announcement.price.stringWithoutZeroFraction) €"
+        announcementDetailVC.dateLabel.text = dateFromDate
+        
+        
         self.present(announcementDetailVC, animated: true)
     }
 }
