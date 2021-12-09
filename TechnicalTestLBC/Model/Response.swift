@@ -28,9 +28,23 @@ struct Response: Codable {
         case isUrgent = "is_urgent"
         case siret
     }
+    // MARK: - ImagesURL
+    struct ImagesURL: Codable {
+        let small, thumb: String?
+    }
 }
 
-// MARK: - ImagesURL
-struct ImagesURL: Codable {
-    let small, thumb: String?
+struct ResponseRepresentable {
+    let id, categoryID: Int
+    let title, annoncementDescription: String
+    let price: Double
+    let imagesURL: ImagesURL
+    let creationDate: Date
+    let isUrgent: Bool
+    let siret: String?
+
+    
+    struct ImagesURL {
+        let small, thumb: String?
+    }
 }
