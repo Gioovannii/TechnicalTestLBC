@@ -48,6 +48,7 @@ class AnnouncmentCell: UITableViewCell {
         thumbImageView.layer.cornerRadius = 10
         thumbImageView.layer.borderWidth = 1
         thumbImageView.layer.borderColor = UIColor.gray.cgColor
+        thumbImageView.clipsToBounds = true
     }
     
     func setupNameLabel() {
