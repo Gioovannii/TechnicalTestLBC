@@ -11,8 +11,10 @@ extension DateFormatter {
     
     static func getDateToString(from: Date) -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd', 'HH:mm:ss ZZZZZ "
-        
+        dateFormatter.dateFormat = "MM-dd-yyyy HH:mm"
+        dateFormatter.locale = Locale(identifier: "fr")
+        dateFormatter.dateStyle = .long
+        dateFormatter.timeStyle = .short
         return dateFormatter.string(from: from)
     }
     
