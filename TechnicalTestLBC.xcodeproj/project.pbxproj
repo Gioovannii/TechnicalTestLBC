@@ -115,12 +115,11 @@
 		7B616FDC275EECAE00BEDBD5 /* TechnicalTestLBC */ = {
 			isa = PBXGroup;
 			children = (
-				7B617017275F020000BEDBD5 /* Model */,
 				7B61700D275EECDA00BEDBD5 /* Extension - Utilities */,
+				7B617017275F020000BEDBD5 /* Model */,
+				7BCBB3712761E4920098FD6C /* AnnouncementDetailVC */,
+				7BCBB3702761E47D0098FD6C /* AnnouncementListVC */,
 				7B616FEB275EECB000BEDBD5 /* Info.plist */,
-				7B617011275EF3E600BEDBD5 /* AnnouncementsListVC.swift */,
-				7B617013275EF89700BEDBD5 /* AnnouncmentCell.swift */,
-				7BCBB36E2761A1E90098FD6C /* AnnouncementDetailVC.swift */,
 				7B617010275EEFD500BEDBD5 /* Supported Files */,
 			);
 			path = TechnicalTestLBC;
@@ -173,6 +172,23 @@
 				7BCBB36C2761A0210098FD6C /* Constant.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		7BCBB3702761E47D0098FD6C /* AnnouncementListVC */ = {
+			isa = PBXGroup;
+			children = (
+				7B617013275EF89700BEDBD5 /* AnnouncmentCell.swift */,
+				7B617011275EF3E600BEDBD5 /* AnnouncementsListVC.swift */,
+			);
+			path = AnnouncementListVC;
+			sourceTree = "<group>";
+		};
+		7BCBB3712761E4920098FD6C /* AnnouncementDetailVC */ = {
+			isa = PBXGroup;
+			children = (
+				7BCBB36E2761A1E90098FD6C /* AnnouncementDetailVC.swift */,
+			);
+			path = AnnouncementDetailVC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

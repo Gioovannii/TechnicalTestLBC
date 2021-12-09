@@ -9,13 +9,13 @@ import UIKit
 
 class AnnouncementDetailVC: UIViewController {
     var announcement: Response?
-        
+    
     var safeArea: UILayoutGuide!
     var imageThumb = UIImageView()
     var titleLabel = UILabel()
     var priceLabel = UILabel()
     var dateLabel = UILabel()
-    var descriptionLabel = UITextView()
+    var descriptionTextView = UILabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,8 +24,7 @@ class AnnouncementDetailVC: UIViewController {
         setupTitle()
         setupPriceLabel()
         setupDateLabel()
-        //        setupDescription()
-        
+        setupDescription()
     }
     
     func prepareView() {
@@ -56,7 +55,7 @@ class AnnouncementDetailVC: UIViewController {
         titleLabel.numberOfLines = 0
         titleLabel.font = UIFont(name: "helvetica", size: 22)
     }
-
+    
     func setupPriceLabel() {
         view.addSubview(priceLabel)
         
@@ -74,11 +73,13 @@ class AnnouncementDetailVC: UIViewController {
     }
     
     
-//    func setupDescription() {
-//        view.addSubview(descriptionLabel)
-//        imageThumb.translatesAutoresizingMaskIntoConstraints                       = false
-//
-//
-//
-//    }
+    func setupDescription() {
+        view.addSubview(descriptionTextView)
+        
+        descriptionTextView.translatesAutoresizingMaskIntoConstraints                                    = false
+        descriptionTextView.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 20).isActive = true
+        descriptionTextView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor).isActive           = true
+        descriptionTextView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor).isActive         = true
+        descriptionTextView.numberOfLines = 0        
+    }
 }

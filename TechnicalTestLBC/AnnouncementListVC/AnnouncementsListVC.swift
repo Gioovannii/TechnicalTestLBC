@@ -105,7 +105,8 @@ extension AnnouncementsListVC:UITableViewDelegate {
         announcementDetailVC.announcement = announcement
         announcementDetailVC.imageThumb.downloaded(from: announcement.imagesURL.thumb!)
         announcementDetailVC.titleLabel.text = announcement.title
-        announcementDetailVC.descriptionLabel.text = announcement.annoncementDescription
+        announcementDetailVC.descriptionTextView.text = announcement.annoncementDescription
+        print(announcement.annoncementDescription)
         announcementDetailVC.priceLabel.text = "\(announcement.price.stringWithoutZeroFraction) €"
         announcementDetailVC.dateLabel.text = dateFromDate
         
