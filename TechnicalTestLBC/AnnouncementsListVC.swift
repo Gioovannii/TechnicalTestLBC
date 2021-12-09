@@ -7,10 +7,6 @@
 
 import UIKit
 
-struct Cells {
-    static let AnnouncementCell = "AnnouncementCell"
-}
-
 class AnnouncementsListVC: UIViewController {
     
     var tableView = UITableView()
@@ -34,6 +30,7 @@ class AnnouncementsListVC: UIViewController {
     
     func setTableViewDelegates() {
         tableView.dataSource = self
+        tableView.delegate = self
     }
     
     func fetchData() -> ([Response]) -> () {
@@ -88,17 +85,23 @@ extension AnnouncementsListVC: UITableViewDataSource {
         
         guard let itemCell = cell as? AnnouncmentCell else { return cell }
         
-        if let imageThumb = item.imagesURL.thumb {
-            itemCell.thumbImageView.downloaded(from: imageThumb)
-        } else {
-            itemCell.thumbImageView = UIImageView(image: UIImage(named: "no-pictures"))
-        }
-        
+        if let imageSmall = item.imagesURL.small { itemCell.thumbImageView.downloaded(from: imageSmall)
+        } else { itemCell.thumbImageView = UIImageView(image: UIImage(named: "no-pictures")) }
         itemCell.titleLabel.text = item.title
         itemCell.priceLabel.text = "\(item.price.stringWithoutZeroFraction) €"
         itemCell.isUrgentLabel.text = item.isUrgent == true ? "Urgent" : ""
         itemCell.categoryLabel.text = getCategoryDescription(id: item.categoryID)
         return cell
+    }
+}
+
+extension AnnouncementsListVC:UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let announcement = self.result[indexPath.row]
+        let announcementDetailVC = AnnouncementDetailVC()
+        announcementDetailVC.announcement = announcement
+        announcementDetailVC.imageThumb.downloaded(from: announcement.imagesURL.thumb!)
+        self.present(announcementDetailVC, animated: true)
     }
 }
 
@@ -122,7 +125,6 @@ extension AnnouncementsListVC {
             }
             
             decodedResponse.sort { $0.isUrgent && !$1.isUrgent }
-
             onCompletion(decodedResponse)
         }
         
