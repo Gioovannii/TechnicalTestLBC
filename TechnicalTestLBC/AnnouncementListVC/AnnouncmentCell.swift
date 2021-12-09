@@ -75,6 +75,9 @@ class AnnouncmentCell: UITableViewCell {
         categoryLabel.translatesAutoresizingMaskIntoConstraints = false
         categoryLabel.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor).isActive = true
         categoryLabel.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: 5).isActive = true
+        categoryLabel.backgroundColor = .orange
+        categoryLabel.layer.cornerRadius = 5
+        categoryLabel.layer.masksToBounds = true
     }
     
     func setupIsUrgentLabel() {
@@ -84,6 +87,4 @@ class AnnouncmentCell: UITableViewCell {
         isUrgentLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10).isActive = true
         isUrgentLabel.leadingAnchor.constraint(equalTo: priceLabel.trailingAnchor, constant: 10).isActive = true
     }
-    
-  
 }
