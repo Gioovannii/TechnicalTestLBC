@@ -22,6 +22,8 @@
 		7B99208D27605343006E3EA5 /* Double + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B99208C27605343006E3EA5 /* Double + Ext.swift */; };
 		7B99208F27605753006E3EA5 /* Date formatter + String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B99208E27605753006E3EA5 /* Date formatter + String.swift */; };
 		7B99209127609342006E3EA5 /* UIImageView + URLImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B99209027609342006E3EA5 /* UIImageView + URLImage.swift */; };
+		7BCBB36D2761A0210098FD6C /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCBB36C2761A0210098FD6C /* Constant.swift */; };
+		7BCBB36F2761A1E90098FD6C /* AnnouncementDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCBB36E2761A1E90098FD6C /* AnnouncementDetailVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +63,8 @@
 		7B99208C27605343006E3EA5 /* Double + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double + Ext.swift"; sourceTree = "<group>"; };
 		7B99208E27605753006E3EA5 /* Date formatter + String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date formatter + String.swift"; sourceTree = "<group>"; };
 		7B99209027609342006E3EA5 /* UIImageView + URLImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView + URLImage.swift"; sourceTree = "<group>"; };
+		7BCBB36C2761A0210098FD6C /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		7BCBB36E2761A1E90098FD6C /* AnnouncementDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementDetailVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +120,7 @@
 				7B616FEB275EECB000BEDBD5 /* Info.plist */,
 				7B617011275EF3E600BEDBD5 /* AnnouncementsListVC.swift */,
 				7B617013275EF89700BEDBD5 /* AnnouncmentCell.swift */,
+				7BCBB36E2761A1E90098FD6C /* AnnouncementDetailVC.swift */,
 				7B617010275EEFD500BEDBD5 /* Supported Files */,
 			);
 			path = TechnicalTestLBC;
@@ -143,9 +148,9 @@
 			children = (
 				7B61700E275EED1300BEDBD5 /* UIView + Ext.swift */,
 				7B617018275F2EE000BEDBD5 /* UIImage + Ext.swift */,
+				7B99209027609342006E3EA5 /* UIImageView + URLImage.swift */,
 				7B99208C27605343006E3EA5 /* Double + Ext.swift */,
 				7B99208E27605753006E3EA5 /* Date formatter + String.swift */,
-				7B99209027609342006E3EA5 /* UIImageView + URLImage.swift */,
 			);
 			path = "Extension - Utilities";
 			sourceTree = "<group>";
@@ -165,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				7B617015275F01F300BEDBD5 /* Response.swift */,
+				7BCBB36C2761A0210098FD6C /* Constant.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -303,10 +309,12 @@
 				7B617019275F2EE000BEDBD5 /* UIImage + Ext.swift in Sources */,
 				7B616FDE275EECAE00BEDBD5 /* AppDelegate.swift in Sources */,
 				7B61700F275EED1300BEDBD5 /* UIView + Ext.swift in Sources */,
+				7BCBB36F2761A1E90098FD6C /* AnnouncementDetailVC.swift in Sources */,
 				7B99208F27605753006E3EA5 /* Date formatter + String.swift in Sources */,
 				7B616FE0275EECAE00BEDBD5 /* SceneDelegate.swift in Sources */,
 				7B99208D27605343006E3EA5 /* Double + Ext.swift in Sources */,
 				7B617016275F01F300BEDBD5 /* Response.swift in Sources */,
+				7BCBB36D2761A0210098FD6C /* Constant.swift in Sources */,
 				7B617014275EF89700BEDBD5 /* AnnouncmentCell.swift in Sources */,
 				7B617012275EF3E600BEDBD5 /* AnnouncementsListVC.swift in Sources */,
 			);
