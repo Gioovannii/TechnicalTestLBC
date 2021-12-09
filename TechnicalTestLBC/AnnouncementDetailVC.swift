@@ -34,11 +34,9 @@ class AnnouncementDetailVC: UIViewController {
         view.addSubview(imageThumb)
         
         imageThumb.translatesAutoresizingMaskIntoConstraints                                       = false
-        imageThumb.contentMode = .scaleAspectFit
-        imageThumb.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive                  = true
-        imageThumb.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 50).isActive        = true
-        imageThumb.widthAnchor.constraint(equalTo: safeArea.widthAnchor, multiplier: 0.5).isActive = true
-        imageThumb.heightAnchor.constraint(equalTo: imageThumb.widthAnchor).isActive               = true
+        imageThumb.contentMode = .scaleAspectFill
+        imageThumb.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        imageThumb.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
     }
     
     func setupTitle() {
