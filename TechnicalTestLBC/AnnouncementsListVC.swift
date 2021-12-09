@@ -88,14 +88,17 @@ extension AnnouncementsListVC: UITableViewDataSource {
         
         guard let itemCell = cell as? AnnouncmentCell else { return cell }
         
+        if let imageThumb = item.imagesURL.thumb {
+            itemCell.thumbImageView.downloaded(from: imageThumb)
+        } else {
+            itemCell.thumbImageView = UIImageView(image: UIImage(named: "no-pictures"))
+        }
         
-        itemCell.thumbImageView.downloaded(from: item.imagesURL.thumb!)
         itemCell.titleLabel.text = item.title
         itemCell.priceLabel.text = "\(item.price.stringWithoutZeroFraction) €"
         itemCell.isUrgentLabel.text = item.isUrgent == true ? "Urgent" : ""
         itemCell.categoryLabel.text = getCategoryDescription(id: item.categoryID)
         return cell
-        
     }
 }
 
@@ -112,16 +115,18 @@ extension AnnouncementsListVC {
                 print("Data was nil")
                 return
             }
-            
-            // We have data
-            
-            guard let decodedResponse = try? JSONDecoder().decode([Response].self, from: data) else {
+                        
+            guard var decodedResponse = try? JSONDecoder().decode([Response].self, from: data) else {
                 print("Couldn't decode json")
                 return
             }
+            
+            decodedResponse.sort { $0.isUrgent && !$1.isUrgent }
+
             onCompletion(decodedResponse)
         }
         
         task.resume()
     }
 }
+
