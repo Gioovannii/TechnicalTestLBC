@@ -9,8 +9,8 @@ import UIKit
 
 class AnnouncementDetailVC: UIViewController {
     var announcement: Response?
-    
     var safeArea: UILayoutGuide!
+    
     var imageThumb = UIImageView()
     var titleLabel = UILabel()
     var priceLabel = UILabel()
@@ -80,6 +80,6 @@ class AnnouncementDetailVC: UIViewController {
         descriptionTextView.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 20).isActive = true
         descriptionTextView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor).isActive           = true
         descriptionTextView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor).isActive         = true
-        descriptionTextView.numberOfLines = 0        
+        descriptionTextView.numberOfLines = 0
     }
 }

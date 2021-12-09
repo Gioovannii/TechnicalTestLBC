@@ -43,65 +43,36 @@ class AnnouncementsListVC: UIViewController {
         }
         return anonymousFunction
     }
-    
-    func getCategoryDescription(id: Int) -> String {
-        switch id {
-        case 1:
-            return "Vehicule"
-        case 2:
-            return "Mode"
-        case 3:
-            return "Bricolage"
-        case 4:
-            return "Maison"
-        case 5:
-            return "Loisirs"
-        case 6:
-            return "Immobilier"
-        case 7:
-            return "Livres/CD/DVD"
-        case 8:
-            return "Multimédia"
-        case 9:
-            return "Service"
-        case 10:
-            return "Animaux"
-        case 11:
-            return "Enfants"
-        default:
-            return "Catégorie introuvable"
-        }
-    }
 }
 
 extension AnnouncementsListVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return result.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Cells.AnnouncementCell, for: indexPath)
         let item = result[indexPath.row]
-        
+
         guard let itemCell = cell as? AnnouncmentCell else { return cell }
-        
+
         if let imageSmall = item.imagesURL.small { itemCell.thumbImageView.downloaded(from: imageSmall)
         } else { itemCell.thumbImageView = UIImageView(image: UIImage(named: "no-pictures")) }
         itemCell.titleLabel.text = item.title
         itemCell.priceLabel.text = "\(item.price.stringWithoutZeroFraction) €"
         itemCell.isUrgentLabel.text = item.isUrgent == true ? "Urgent" : ""
-        itemCell.categoryLabel.text = getCategoryDescription(id: item.categoryID)
+        itemCell.categoryLabel.text = Helper.getCategoryDescription(id: item.categoryID)
         return cell
     }
 }
 
-extension AnnouncementsListVC:UITableViewDelegate {
+extension AnnouncementsListVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let announcement = self.result[indexPath.row]
         let announcementDetailVC = AnnouncementDetailVC()
         let dateFromString = DateFormatter.getDateFromString(date: announcement.creationDate)
         let dateFromDate = DateFormatter.getDateToString(from: dateFromString)
-        
+
         announcementDetailVC.announcement = announcement
         announcementDetailVC.imageThumb.downloaded(from: announcement.imagesURL.thumb!)
         announcementDetailVC.titleLabel.text = announcement.title
@@ -109,8 +80,7 @@ extension AnnouncementsListVC:UITableViewDelegate {
         print(announcement.annoncementDescription)
         announcementDetailVC.priceLabel.text = "\(announcement.price.stringWithoutZeroFraction) €"
         announcementDetailVC.dateLabel.text = dateFromDate
-        
-        
+
         self.present(announcementDetailVC, animated: true)
     }
 }
@@ -134,10 +104,20 @@ extension AnnouncementsListVC {
                 return
             }
             
+            
             decodedResponse.sort { $0.isUrgent && !$1.isUrgent }
+            
+            var dataRepre = [ResponseRepresentable]()
+            for data in decodedResponse {
+                let responseRep = ResponseRepresentable(id: data.id, categoryID: data.categoryID, title: data.title, annoncementDescription: data.annoncementDescription, price: data.price, imagesURL: data.imagesURL, creationDate: DateFormatter.getDateFromString(date: data.creationDate), isUrgent: data.isUrgent, siret: data.siret)
+                dataRepre.append(contentsOf: responseRep)
+            }
+
+            dataRepre.sort { $0.creationDate < $1.creationDate}
+            
+            
             onCompletion(decodedResponse)
         }
-        
         task.resume()
     }
 }
