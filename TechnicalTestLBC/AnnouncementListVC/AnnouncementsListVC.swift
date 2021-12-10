@@ -7,7 +7,8 @@
 
 import UIKit
 
-class AnnouncementsListVC: UIViewController {
+final class AnnouncementsListVC: UIViewController {
+    private let requestService = RequestService()
     
     var tableView = UITableView()
     var result = [Response]()
@@ -15,7 +16,7 @@ class AnnouncementsListVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Liste d'annonce"
-        fetchData(onCompletion: fetchData())
+        requestService.fetchData(onCompletion: fetchData())
         configureTableView()
         setTableViewDelegates()
     }
@@ -36,8 +37,8 @@ class AnnouncementsListVC: UIViewController {
     func fetchData() -> ([Response]) -> () {
         let anonymousFunction = { (fetchedResults: [Response]) in
             DispatchQueue.main.async {
-                
-                self.result = fetchedResults
+                self.result = fetchedResults.sorted { $0.creationDate > $1.creationDate }
+                self.result.sort { $0.isUrgent && !$1.isUrgent }
                 self.tableView.reloadData()
             }
         }
@@ -70,55 +71,8 @@ extension AnnouncementsListVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let announcement = self.result[indexPath.row]
         let announcementDetailVC = AnnouncementDetailVC()
-        let dateFromString = DateFormatter.getDateFromString(date: announcement.creationDate)
-        let dateFromDate = DateFormatter.getDateToString(from: dateFromString)
-
         announcementDetailVC.announcement = announcement
-        announcementDetailVC.imageThumb.downloaded(from: announcement.imagesURL.thumb!)
-        announcementDetailVC.titleLabel.text = announcement.title
-        announcementDetailVC.descriptionTextView.text = announcement.annoncementDescription
-        print(announcement.annoncementDescription)
-        announcementDetailVC.priceLabel.text = "\(announcement.price.stringWithoutZeroFraction) €"
-        announcementDetailVC.dateLabel.text = dateFromDate
-
         self.present(announcementDetailVC, animated: true)
-    }
-}
-
-extension AnnouncementsListVC {
-    
-    func fetchData(onCompletion: @escaping ([Response]) -> ()) {
-        guard let url = URL(string: "https://raw.githubusercontent.com/leboncoin/paperclip/master/listing.json") else {
-            print("Invalid URL")
-            return
-        }
-        
-        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-            guard let data = data else {
-                print("Data was nil")
-                return
-            }
-                        
-            guard var decodedResponse = try? JSONDecoder().decode([Response].self, from: data) else {
-                print("Couldn't decode json")
-                return
-            }
-            
-            
-            decodedResponse.sort { $0.isUrgent && !$1.isUrgent }
-            
-            var dataRepre = [ResponseRepresentable]()
-            for data in decodedResponse {
-                let responseRep = ResponseRepresentable(id: data.id, categoryID: data.categoryID, title: data.title, annoncementDescription: data.annoncementDescription, price: data.price, imagesURL: data.imagesURL, creationDate: DateFormatter.getDateFromString(date: data.creationDate), isUrgent: data.isUrgent, siret: data.siret)
-                dataRepre.append(contentsOf: responseRep)
-            }
-
-            dataRepre.sort { $0.creationDate < $1.creationDate}
-            
-            
-            onCompletion(decodedResponse)
-        }
-        task.resume()
     }
 }
 
