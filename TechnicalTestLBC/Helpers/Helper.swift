@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Helper {
+extension AnnouncementsListVC {
     static func getCategoryDescription(id: Int) -> String {
         switch id {
         case 1:
