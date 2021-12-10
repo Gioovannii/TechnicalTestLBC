@@ -11,19 +11,18 @@ final class AnnouncementsListVC: UIViewController {
     private let requestService = RequestService()
     
     var tableView = UITableView()
+    var searchController = UISearchController(searchResultsController: nil)
+
     var result = [Response]()
     var filteredAnnouncement = [Response]()
-    var searchController = UISearchController(searchResultsController: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = Constant.annoucementTitle
         navigationItem.searchController = searchController
         setupSearchBar()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Catégories", style: .plain, target: self, action: #selector(filterResult))
         
-        requestService.fetchData(onCompletion: fetchData())
-        configureTableView()
-        setTableViewDelegates()
     }
     
     func configureTableView() {
@@ -52,8 +51,6 @@ final class AnnouncementsListVC: UIViewController {
     
     func setupSearchBar() {
         searchController.searchResultsUpdater = self
-        
-        searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Choisissez une categorie... "
         searchController.searchBar.sizeToFit()
         searchController.searchBar.searchBarStyle = .default
@@ -82,6 +79,11 @@ final class AnnouncementsListVC: UIViewController {
     func isFiltering() -> Bool {
         let searchBarScopeIsFiltering = searchController.searchBar.selectedScopeButtonIndex != 0
         return searchController.isActive && (!isSearchBarEmpty() || searchBarScopeIsFiltering)
+    }
+    
+    @objc func filterResult() {
+        let categorieVC = CategoriesListVC()
+        self.present(categorieVC, animated: true)
     }
 }
 
@@ -112,12 +114,11 @@ extension AnnouncementsListVC: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: Constant.AnnouncementCell, for: indexPath) as? AnnouncementCell else { return UITableViewCell() }
-        let response: Response
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Constant.AnnouncementCell, for: indexPath) as? AnnouncementCell
+        else { return UITableViewCell() }
         
-//        let item = result[indexPath.row]
-//        let itemFiltered = filteredAnnouncement[indexPath.row]
-                
+        let response: Response
+            
         if isFiltering() {
             response = filteredAnnouncement[indexPath.row]
         } else {
