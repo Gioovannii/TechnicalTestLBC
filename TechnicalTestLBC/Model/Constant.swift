@@ -7,6 +7,12 @@
 
 import Foundation
 
-struct Cells {
+struct Constant {
+    static let annoucementTitle = "Liste d'annonce"
+    
     static let AnnouncementCell = "AnnouncementCell"
+
+    
+    static let imageName = "no-pictures"
+    
 }

@@ -7,8 +7,8 @@
 
 import Foundation
  
+/// Format form date to string and the other way around
 extension DateFormatter {
-    
     static func getDateToString(from: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM-dd-yyyy HH:mm"

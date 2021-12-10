@@ -5,6 +5,9 @@
 //  Created by Giovanni Gaffé on 2021/12/7.
 //
 
+/// Note: Most of my repo in github all public are using storyboard.
+/// It was a big challenge to use only code, hope it will satisfy all your expectations
+
 import UIKit
 
 class AnnouncmentCell: UITableViewCell {
@@ -14,7 +17,7 @@ class AnnouncmentCell: UITableViewCell {
     
     let titleLabel = UILabel()
     let priceLabel = UILabel()
-    let categoryLabel = UILabel()
+    let categoryLabel = PaddingLabel()
     let isUrgentLabel = UILabel()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -25,8 +28,6 @@ class AnnouncmentCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-   
     
     func setupView() {
         safeArea = layoutMarginsGuide
@@ -77,8 +78,15 @@ class AnnouncmentCell: UITableViewCell {
         categoryLabel.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor).isActive                  = true
         categoryLabel.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: 5).isActive = true
         categoryLabel.backgroundColor = .orange
+        categoryLabel.paddingTop = 5
+        categoryLabel.paddingLeft = 5
+        categoryLabel.paddingRight = 5
+        categoryLabel.paddingBottom = 5
         categoryLabel.layer.cornerRadius = 5
-        categoryLabel.layer.masksToBounds                                                               = true
+        categoryLabel.layer.masksToBounds = true
+        
+        
+        
     }
     
     func setupIsUrgentLabel() {

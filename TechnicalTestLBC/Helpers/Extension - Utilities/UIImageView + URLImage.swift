@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// Two method for download image from URL or string where we check if it's a valid URL
 extension UIImageView {
     func downloaded(from url: URL, contentMode mode: ContentMode = .scaleToFill) {
         contentMode = mode

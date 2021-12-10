@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// Pin to his superview to take the maximum space available
 extension UIView {
     func pin(to superview: UIView) {
         translatesAutoresizingMaskIntoConstraints                               = false

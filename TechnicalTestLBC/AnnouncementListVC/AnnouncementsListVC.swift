@@ -15,7 +15,7 @@ final class AnnouncementsListVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Liste d'annonce"
+        title = Constant.annoucementTitle
         requestService.fetchData(onCompletion: fetchData())
         configureTableView()
         setTableViewDelegates()
@@ -25,7 +25,7 @@ final class AnnouncementsListVC: UIViewController {
         view.addSubview(tableView)
         setTableViewDelegates()
         tableView.rowHeight = 100
-        tableView.register(AnnouncmentCell.self, forCellReuseIdentifier: Cells.AnnouncementCell)
+        tableView.register(AnnouncmentCell.self, forCellReuseIdentifier: Constant.AnnouncementCell)
         tableView.pin(to: view)
     }
     
@@ -52,17 +52,17 @@ extension AnnouncementsListVC: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Cells.AnnouncementCell, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constant.AnnouncementCell, for: indexPath)
         let item = result[indexPath.row]
 
         guard let itemCell = cell as? AnnouncmentCell else { return cell }
 
         if let imageSmall = item.imagesURL.small { itemCell.thumbImageView.downloaded(from: imageSmall)
-        } else { itemCell.thumbImageView = UIImageView(image: UIImage(named: "no-pictures")) }
+        } else { itemCell.thumbImageView = UIImageView(image: UIImage(named: Constant.imageName)) }
         itemCell.titleLabel.text = item.title
         itemCell.priceLabel.text = "\(item.price.stringWithoutZeroFraction) €"
         itemCell.isUrgentLabel.text = item.isUrgent == true ? "Urgent" : ""
-        itemCell.categoryLabel.text = Helper.getCategoryDescription(id: item.categoryID)
+        itemCell.categoryLabel.text = AnnouncementsListVC.getCategoryDescription(id: item.categoryID)
         return cell
     }
 }
