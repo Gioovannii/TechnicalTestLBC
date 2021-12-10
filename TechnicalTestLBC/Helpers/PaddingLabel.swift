@@ -37,13 +37,13 @@ class PaddingLabel: UILabel {
         set { textEdgeInsets.right = newValue }
         get { return textEdgeInsets.right }
     }
-    
+
     @IBInspectable
     var paddingTop: CGFloat {
         set { textEdgeInsets.top = newValue }
         get { return textEdgeInsets.top }
     }
-    
+
     @IBInspectable
     var paddingBottom: CGFloat {
         set { textEdgeInsets.bottom = newValue }

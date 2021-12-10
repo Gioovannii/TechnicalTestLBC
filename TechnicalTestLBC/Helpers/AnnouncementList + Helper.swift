@@ -8,6 +8,9 @@
 import Foundation
 
 extension AnnouncementsListVC {
+    static var categorySearchBar = ["Tout", "Vehicule", "Mode", "Bricolage", "Maison", "Loisirs", "Immobilier", "Livres/CD/DVD",
+                                    "Multimédia", "Service", "Animaux", "Enfants"]
+    
     static func getCategoryDescription(id: Int) -> String {
         switch id {
         case 1:
