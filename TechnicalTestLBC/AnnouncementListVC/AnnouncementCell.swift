@@ -10,7 +10,7 @@
 
 import UIKit
 
-class AnnouncmentCell: UITableViewCell {
+class AnnouncementCell: UITableViewCell {
     var safeArea: UILayoutGuide!
     
     var thumbImageView = UIImageView()
