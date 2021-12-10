@@ -23,9 +23,10 @@
 		7B99209127609342006E3EA5 /* UIImageView + URLImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B99209027609342006E3EA5 /* UIImageView + URLImage.swift */; };
 		7BB598E22762EFA10098EBFD /* RequestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB598E12762EFA10098EBFD /* RequestService.swift */; };
 		7BB598E42762FB4C0098EBFD /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB598E32762FB4C0098EBFD /* PaddingLabel.swift */; };
+		7BB598E72763440C0098EBFD /* CategoriesListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB598E62763440C0098EBFD /* CategoriesListVC.swift */; };
 		7BCBB36D2761A0210098FD6C /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCBB36C2761A0210098FD6C /* Constant.swift */; };
 		7BCBB36F2761A1E90098FD6C /* AnnouncementDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCBB36E2761A1E90098FD6C /* AnnouncementDetailVC.swift */; };
-		7BCBB3762761E66C0098FD6C /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCBB3752761E66C0098FD6C /* Helper.swift */; };
+		7BCBB3762761E66C0098FD6C /* AnnouncementList + Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCBB3752761E66C0098FD6C /* AnnouncementList + Helper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,9 +67,10 @@
 		7B99209027609342006E3EA5 /* UIImageView + URLImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView + URLImage.swift"; sourceTree = "<group>"; };
 		7BB598E12762EFA10098EBFD /* RequestService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestService.swift; sourceTree = "<group>"; };
 		7BB598E32762FB4C0098EBFD /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
+		7BB598E62763440C0098EBFD /* CategoriesListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesListVC.swift; sourceTree = "<group>"; };
 		7BCBB36C2761A0210098FD6C /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		7BCBB36E2761A1E90098FD6C /* AnnouncementDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementDetailVC.swift; sourceTree = "<group>"; };
-		7BCBB3752761E66C0098FD6C /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		7BCBB3752761E66C0098FD6C /* AnnouncementList + Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnnouncementList + Helper.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,8 +122,10 @@
 			isa = PBXGroup;
 			children = (
 				7BCBB3742761E6530098FD6C /* Helpers */,
+				7B61700D275EECDA00BEDBD5 /* Extension - Utilities */,
 				7B617017275F020000BEDBD5 /* Model */,
 				7BCBB3702761E47D0098FD6C /* AnnouncementListVC */,
+				7BB598E527633A6C0098EBFD /* Categories */,
 				7BCBB3712761E4920098FD6C /* AnnouncementDetailVC */,
 				7B616FEB275EECB000BEDBD5 /* Info.plist */,
 				7B617010275EEFD500BEDBD5 /* Supported Files */,
@@ -178,6 +182,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		7BB598E527633A6C0098EBFD /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				7BB598E62763440C0098EBFD /* CategoriesListVC.swift */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
 		7BCBB3702761E47D0098FD6C /* AnnouncementListVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -198,9 +210,8 @@
 		7BCBB3742761E6530098FD6C /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				7BCBB3752761E66C0098FD6C /* Helper.swift */,
+				7BCBB3752761E66C0098FD6C /* AnnouncementList + Helper.swift */,
 				7BB598E32762FB4C0098EBFD /* PaddingLabel.swift */,
-				7B61700D275EECDA00BEDBD5 /* Extension - Utilities */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -338,8 +349,9 @@
 				7B99209127609342006E3EA5 /* UIImageView + URLImage.swift in Sources */,
 				7B616FDE275EECAE00BEDBD5 /* AppDelegate.swift in Sources */,
 				7B61700F275EED1300BEDBD5 /* UIView + Ext.swift in Sources */,
+				7BB598E72763440C0098EBFD /* CategoriesListVC.swift in Sources */,
 				7BCBB36F2761A1E90098FD6C /* AnnouncementDetailVC.swift in Sources */,
-				7BCBB3762761E66C0098FD6C /* Helper.swift in Sources */,
+				7BCBB3762761E66C0098FD6C /* AnnouncementList + Helper.swift in Sources */,
 				7B99208F27605753006E3EA5 /* Date formatter + String.swift in Sources */,
 				7B616FE0275EECAE00BEDBD5 /* SceneDelegate.swift in Sources */,
 				7B99208D27605343006E3EA5 /* Double + Ext.swift in Sources */,
