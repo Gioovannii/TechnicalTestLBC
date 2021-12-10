@@ -12,10 +12,15 @@ final class AnnouncementsListVC: UIViewController {
     
     var tableView = UITableView()
     var result = [Response]()
+    var filteredAnnouncement = [Response]()
+    var searchController = UISearchController(searchResultsController: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = Constant.annoucementTitle
+        navigationItem.searchController = searchController
+        setupSearchBar()
+        
         requestService.fetchData(onCompletion: fetchData())
         configureTableView()
         setTableViewDelegates()
@@ -25,7 +30,7 @@ final class AnnouncementsListVC: UIViewController {
         view.addSubview(tableView)
         setTableViewDelegates()
         tableView.rowHeight = 100
-        tableView.register(AnnouncmentCell.self, forCellReuseIdentifier: Constant.AnnouncementCell)
+        tableView.register(AnnouncementCell.self, forCellReuseIdentifier: Constant.AnnouncementCell)
         tableView.pin(to: view)
     }
     
@@ -44,25 +49,88 @@ final class AnnouncementsListVC: UIViewController {
         }
         return anonymousFunction
     }
+    
+    func setupSearchBar() {
+        searchController.searchResultsUpdater = self
+        
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Choisissez une categorie... "
+        searchController.searchBar.sizeToFit()
+        searchController.searchBar.searchBarStyle = .default
+        searchController.searchBar.scopeButtonTitles = AnnouncementsListVC.categorySearchBar
+        searchController.searchBar.delegate = self
+    }
+    
+    func filterContentForSearchText(searchText: String, scope: String = "Tout") {
+        filteredAnnouncement = result.filter ({ (category: Response) -> Bool in
+            let categoryByID = AnnouncementsListVC.getCategoryDescription(id: category.categoryID)
+            let doesCategoryMatch = (scope == "Tout") || (categoryByID == scope)
+            
+            if isSearchBarEmpty() {
+                return doesCategoryMatch
+            } else {
+                return doesCategoryMatch && category.title.lowercased().contains(searchText.lowercased())
+            }
+        })
+        tableView.reloadData()
+    }
+    
+    func isSearchBarEmpty() -> Bool {
+        return searchController.searchBar.text?.isEmpty ?? true
+    }
+    
+    func isFiltering() -> Bool {
+        let searchBarScopeIsFiltering = searchController.searchBar.selectedScopeButtonIndex != 0
+        return searchController.isActive && (!isSearchBarEmpty() || searchBarScopeIsFiltering)
+    }
 }
+
+// MARK: - Search bar
+
+extension AnnouncementsListVC: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        filterContentForSearchText(searchText: searchBar.text!, scope: searchBar.scopeButtonTitles![selectedScope])
+    }
+}
+
+extension AnnouncementsListVC: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        let searchBar = searchController.searchBar
+        let scope = searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex]
+        
+        filterContentForSearchText(searchText: searchController.searchBar.text!, scope: scope)
+    }
+}
+
+
+// MARK: - Table view
 
 extension AnnouncementsListVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return result.count
+        if isFiltering() { return filteredAnnouncement.count
+        } else { return result.count }
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Constant.AnnouncementCell, for: indexPath)
-        let item = result[indexPath.row]
-
-        guard let itemCell = cell as? AnnouncmentCell else { return cell }
-
-        if let imageSmall = item.imagesURL.small { itemCell.thumbImageView.downloaded(from: imageSmall)
-        } else { itemCell.thumbImageView = UIImageView(image: UIImage(named: Constant.imageName)) }
-        itemCell.titleLabel.text = item.title
-        itemCell.priceLabel.text = "\(item.price.stringWithoutZeroFraction) €"
-        itemCell.isUrgentLabel.text = item.isUrgent == true ? "Urgent" : ""
-        itemCell.categoryLabel.text = AnnouncementsListVC.getCategoryDescription(id: item.categoryID)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Constant.AnnouncementCell, for: indexPath) as? AnnouncementCell else { return UITableViewCell() }
+        let response: Response
+        
+//        let item = result[indexPath.row]
+//        let itemFiltered = filteredAnnouncement[indexPath.row]
+                
+        if isFiltering() {
+            response = filteredAnnouncement[indexPath.row]
+        } else {
+            response = result[indexPath.row]
+        }
+        
+        if let imageSmall = response.imagesURL.small { cell.thumbImageView.downloaded(from: imageSmall)
+        } else { cell.thumbImageView = UIImageView(image: UIImage(named: Constant.imageName)) }
+        
+        cell.titleLabel.text = response.title
+        cell.priceLabel.text = "\(response.price.stringWithoutZeroFraction) €"
+        cell.isUrgentLabel.text = response.isUrgent == true ? "Urgent" : ""
+        cell.categoryLabel.text = AnnouncementsListVC.getCategoryDescription(id: response.categoryID)
         return cell
     }
 }
