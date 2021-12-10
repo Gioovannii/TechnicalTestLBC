@@ -18,6 +18,15 @@ final class AnnouncementsListVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureNavigationView()
+        configureTableView()
+        
+        requestService.fetchData(onCompletion: fetchData())
+        configureTableView()
+        setTableViewDelegates()
+    }
+    
+    func configureNavigationView() {
         title = Constant.annoucementTitle
         navigationItem.searchController = searchController
         setupSearchBar()
