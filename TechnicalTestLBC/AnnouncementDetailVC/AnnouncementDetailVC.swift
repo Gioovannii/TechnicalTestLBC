@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AnnouncementDetailVC: UIViewController {
+final class AnnouncementDetailVC: UIViewController {
     var announcement: Response?
     var safeArea: UILayoutGuide!
     
@@ -26,15 +26,24 @@ class AnnouncementDetailVC: UIViewController {
         setupDateLabel()
         setupDescription()
     }
-    
+
+    /// Prepare  data with announcement from AnnouncementListVC
     func prepareView() {
         view.backgroundColor = .white
         safeArea = view.layoutMarginsGuide
         guard let announcement = announcement else { return }
         guard let image = announcement.imagesURL.thumb else { return }
-        imageThumb.downloaded(from: image)
+        let strDate = DateFormatter.getDateFromString(date: announcement.creationDate)
+        let dateStr = DateFormatter.getDateToString(from: strDate)
+        self.imageThumb.downloaded(from: image)
+        self.titleLabel.text = announcement.title
+        self.priceLabel.text = "\(announcement.price.stringWithoutZeroFraction) €"
+        self.dateLabel.text = dateStr
+        self.descriptionTextView.text = announcement.annoncementDescription
     }
     
+    // MARK: - Set Constraint for each View
+
     func setupImage() {
         view.addSubview(imageThumb)
         
