@@ -8,33 +8,33 @@
 import Foundation
 
 extension AnnouncementsListVC {
-    static var categorySearchBar = ["Tout", "Vehicule", "Mode", "Bricolage", "Maison", "Loisirs", "Immobilier", "Livres/CD/DVD",
-                                    "Multimédia", "Service", "Animaux", "Enfants"]
+    static var categorySearchBar = ["🔄", "🚗", "👗", "🪛", "🏚", "🎳", "🚪", "📀",
+                                    "💻", "🎖", "🦮", "👶"]
     
     static func getCategoryDescription(id: Int) -> String {
         switch id {
         case 1:
-            return "Vehicule"
+            return "🚗"
         case 2:
-            return "Mode"
+            return "👗"
         case 3:
-            return "Bricolage"
+            return "🪛"
         case 4:
-            return "Maison"
+            return "🏚"
         case 5:
-            return "Loisirs"
+            return "🎳"
         case 6:
-            return "Immobilier"
+            return "🚪"
         case 7:
-            return "Livres/CD/DVD"
+            return "📀"
         case 8:
-            return "Multimédia"
+            return "💻"
         case 9:
-            return "Service"
+            return "🎖"
         case 10:
-            return "Animaux"
+            return "🦮"
         case 11:
-            return "Enfants"
+            return "👶"
         default:
             return "Catégorie introuvable"
         }
