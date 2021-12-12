@@ -76,9 +76,9 @@ final class AnnouncementDetailVC: UIViewController {
     func setupDateLabel() {
         view.addSubview(dateLabel)
         
-        dateLabel.translatesAutoresizingMaskIntoConstraints                       = false
+        dateLabel.translatesAutoresizingMaskIntoConstraints                                    = false
         dateLabel.topAnchor.constraint(equalTo: priceLabel.bottomAnchor, constant: 5).isActive = true
-        dateLabel.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor).isActive = true
+        dateLabel.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor).isActive           = true
     }
     
     

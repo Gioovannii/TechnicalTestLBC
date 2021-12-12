@@ -7,19 +7,28 @@
 
 import Foundation
 
-class RequestService {
-    func fetchData(onCompletion: @escaping ([Response]) -> ()) {
+protocol RequestTestService {
+    func fetchData(onCompletion: @escaping ([Response]) -> Void)
+}
+
+final class RequestService: RequestTestService {
+    
+    private let session: URLSession
+    init(session: URLSession = URLSession(configuration: .default)) {
+        self.session = session
+    }
+    
+    func fetchData(onCompletion: @escaping ([Response]) -> Void) {
         guard let url = URL(string: "https://raw.githubusercontent.com/leboncoin/paperclip/master/listing.json") else {
             print("Invalid URL")
             return
         }
-        
-        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+        session.dataTask(with: url) { (data, response, error) in
             guard let data = data else {
                 print("Data was nil")
                 return
             }
-                        
+            
             guard let decodedResponse = try? JSONDecoder().decode([Response].self, from: data) else {
                 print("Couldn't decode json")
                 return
@@ -27,6 +36,6 @@ class RequestService {
             
             onCompletion(decodedResponse)
         }
-        task.resume()
+        .resume()
     }
 }

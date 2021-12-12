@@ -18,6 +18,7 @@ class AnnouncementCell: UITableViewCell {
     let titleLabel = UILabel()
     let priceLabel = UILabel()
     let categoryLabel = PaddingLabel()
+    let categoryNameLabel = PaddingLabel()
     let isUrgentLabel = UILabel()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -34,7 +35,8 @@ class AnnouncementCell: UITableViewCell {
         setupImageView()
         setupNameLabel()
         setupPriceLabel()
-        setupCategoryLabel()
+        setupCategoryImageLabel()
+        setupCategoryNameLabel()
         setupIsUrgentLabel()
     }
     
@@ -71,11 +73,20 @@ class AnnouncementCell: UITableViewCell {
         priceLabel.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor).isActive     = true
     }
     
-    func setupCategoryLabel() {
+    func setupIsUrgentLabel() {
+        addSubview(isUrgentLabel)
+        
+        isUrgentLabel.translatesAutoresizingMaskIntoConstraints                                           = false
+        isUrgentLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10).isActive              = true
+        isUrgentLabel.leadingAnchor.constraint(equalTo: priceLabel.trailingAnchor, constant: 10).isActive = true
+    }
+
+    
+    func setupCategoryImageLabel() {
         addSubview(categoryLabel)
         
         categoryLabel.translatesAutoresizingMaskIntoConstraints                                         = false
-        categoryLabel.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor).isActive                  = true
+        categoryLabel.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: 5).isActive                  = true
         categoryLabel.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: 5).isActive = true
         categoryLabel.backgroundColor = .orange
         categoryLabel.paddingTop = 5
@@ -85,15 +96,14 @@ class AnnouncementCell: UITableViewCell {
         categoryLabel.layer.cornerRadius = 5
         categoryLabel.layer.masksToBounds = true
         
-        
-        
     }
     
-    func setupIsUrgentLabel() {
-        addSubview(isUrgentLabel)
+    func setupCategoryNameLabel() {
+        addSubview(categoryNameLabel)
         
-        isUrgentLabel.translatesAutoresizingMaskIntoConstraints                                           = false
-        isUrgentLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10).isActive              = true
-        isUrgentLabel.leadingAnchor.constraint(equalTo: priceLabel.trailingAnchor, constant: 10).isActive = true
+        categoryNameLabel.translatesAutoresizingMaskIntoConstraints                                       = false
+        categoryNameLabel.heightAnchor.constraint(equalTo: categoryLabel.heightAnchor).isActive               = true
+        categoryNameLabel.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: 5).isActive = true
+        categoryNameLabel.trailingAnchor.constraint(equalTo: categoryLabel.leadingAnchor, constant: -10).isActive = true
     }
 }

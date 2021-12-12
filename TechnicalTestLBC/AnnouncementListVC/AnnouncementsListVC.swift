@@ -30,7 +30,6 @@ final class AnnouncementsListVC: UIViewController {
         title = Constant.annoucementTitle
         navigationItem.searchController = searchController
         setupSearchBar()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Catégories", style: .plain, target: self, action: #selector(filterResult))
         
     }
     
@@ -69,7 +68,7 @@ final class AnnouncementsListVC: UIViewController {
     
     func filterContentForSearchText(searchText: String, scope: String = "Tout") {
         filteredAnnouncement = result.filter ({ (category: Response) -> Bool in
-            let categoryByID = AnnouncementsListVC.getCategoryDescription(id: category.categoryID)
+            let categoryByID = AnnouncementsListVC.getCategoryImage(id: category.categoryID)
             let doesCategoryMatch = (scope == "Tout") || (categoryByID == scope)
             
             if isSearchBarEmpty() {
@@ -88,11 +87,6 @@ final class AnnouncementsListVC: UIViewController {
     func isFiltering() -> Bool {
         let searchBarScopeIsFiltering = searchController.searchBar.selectedScopeButtonIndex != 0
         return searchController.isActive && (!isSearchBarEmpty() || searchBarScopeIsFiltering)
-    }
-    
-    @objc func filterResult() {
-        let categorieVC = CategoriesListVC()
-        self.present(categorieVC, animated: true)
     }
 }
 
@@ -140,7 +134,8 @@ extension AnnouncementsListVC: UITableViewDataSource {
         cell.titleLabel.text = response.title
         cell.priceLabel.text = "\(response.price.stringWithoutZeroFraction) €"
         cell.isUrgentLabel.text = response.isUrgent == true ? "Urgent" : ""
-        cell.categoryLabel.text = AnnouncementsListVC.getCategoryDescription(id: response.categoryID)
+        cell.categoryLabel.text = AnnouncementsListVC.getCategoryImage(id: response.categoryID)
+        cell.categoryNameLabel.text = AnnouncementsListVC.getCategoryDescription(id: response.categoryID)
         return cell
     }
 }
