@@ -28,7 +28,7 @@
 		7BCBB36F2761A1E90098FD6C /* AnnouncementDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCBB36E2761A1E90098FD6C /* AnnouncementDetailVC.swift */; };
 		7BCBB3762761E66C0098FD6C /* AnnouncementList + Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCBB3752761E66C0098FD6C /* AnnouncementList + Helper.swift */; };
 		7BE82CBE2766F0BD00F98561 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE82CBD2766F0BD00F98561 /* NetworkError.swift */; };
-		7BE82CC3276728BD00F98561 /* DateFormattertestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE82CC2276728BD00F98561 /* DateFormattertestCase.swift */; };
+		7BE82CC3276728BD00F98561 /* DateFormatterTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE82CC2276728BD00F98561 /* DateFormatterTestCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,7 +66,7 @@
 		7BCBB36E2761A1E90098FD6C /* AnnouncementDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementDetailVC.swift; sourceTree = "<group>"; };
 		7BCBB3752761E66C0098FD6C /* AnnouncementList + Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnnouncementList + Helper.swift"; sourceTree = "<group>"; };
 		7BE82CBD2766F0BD00F98561 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
-		7BE82CC2276728BD00F98561 /* DateFormattertestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormattertestCase.swift; sourceTree = "<group>"; };
+		7BE82CC2276728BD00F98561 /* DateFormatterTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterTestCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,7 +209,7 @@
 		7BE82CC12767289F00F98561 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				7BE82CC2276728BD00F98561 /* DateFormattertestCase.swift */,
+				7BE82CC2276728BD00F98561 /* DateFormatterTestCase.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -316,7 +316,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7BE82CC3276728BD00F98561 /* DateFormattertestCase.swift in Sources */,
+				7BE82CC3276728BD00F98561 /* DateFormatterTestCase.swift in Sources */,
 				7B6E4A192765E83E006378C1 /* RequestServiceTestCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
