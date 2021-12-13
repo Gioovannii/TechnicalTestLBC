@@ -12,36 +12,41 @@ final class RequestServiceTestCase: XCTestCase {
 
     // MARK: - Fetch Data Success
     func testFetchData_ShouldPostCallbackSuccessWhenAlldCorrectData() {
-        let result = RequestService(session: URLSessionFake(data: FakeResponseData.correctData, response: FakeResponseData.responseOK, error: nil))
-        
-        let expectation = XCTestExpectation(description: "Wait for queue change")
-        
-        result.fetchData { response in
-            XCTAssertEqual(response[0].title, "Statue homme noir assis en plâtre polychrome")
-            expectation.fulfill()
-        }
-        
-        wait(for: [expectation], timeout: 0.01)
-        
+//        let result = RequestService(session: URLSessionFake(fakeResponse: FakeResponse(data: FakeResponseData.correctData, response: FakeResponseData.responseOK, error: nil)))
+//
+//        let expectation = XCTestExpectation(description: "Wait for queue change")
+//
+//        result.fetchData { (response: Result<[Response], NetworkError>) in
+//            guard case .success(let data) = response else {
+//                XCTFail("testFetchData_ShouldPostSuccessCompletion_IfNoErrorResponseOKAndCorrectData")
+//                return
+//            }
+//
+//            XCTAssertEqual(data[0].title, "Statue homme noir assis en plâtre polychrome")
+//            expectation.fulfill()
+//        }
+//
+//        wait(for: [expectation], timeout: 0.01)
+//
     }
     
     
     // MARK: - fetch Request Failed
 
     func testGetData_WhenIncorrectResponseIsPassed_ThenShouldReturnFailedCallback() {
-        let result = RequestService(session: URLSessionFake(data: FakeResponseData.incorrectData, response: FakeResponseData.responseKO, error: nil))
-        
-        let expectation = XCTestExpectation(description: "Wait for queue change")
-
-        result.fetchData { response in
-            guard let result = response.first?.title else {
-                XCTFail("NoResponseShouldBeFound")
-                return
-            }
-        
-        XCTAssertNotEqual(result, "Statue homme noir assis en plâtre polychrome")
-            print(result)
-        expectation.fulfill()
-        }
+//        let result = RequestService(session: URLSessionFake(fakeResponse: FakeResponse(data: FakeResponseData.incorrectData, response: FakeResponseData.responseKO, error: nil)))
+//
+//        let expectation = XCTestExpectation(description: "Wait for queue change")
+//
+//        result.fetchData { (response: Result<[Response], NetworkError>) in
+//
+//            guard case .failure(let error) = response else {
+//                XCTFail("testFetchData_ShouldPostFailureCompletion_IfNoErrorResponseKOAndIncorrectData")
+//                return
+//            }
+//
+//            XCTAssertNotNil(error)
+//            expectation.fulfill()
+//        }
     }
 }

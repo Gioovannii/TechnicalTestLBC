@@ -12,7 +12,6 @@ struct Constant {
     
     static let AnnouncementCell = "AnnouncementCell"
 
-    
     static let imageName = "no-pictures"
     
 }
