@@ -46,12 +46,19 @@ final class AnnouncementsListVC: UIViewController {
         tableView.delegate = self
     }
     
-    func fetchData() -> ([Response]) -> () {
-        let anonymousFunction = { (fetchedResults: [Response]) in
+    func fetchData() -> (Result<[Response], NetworkError>) -> () {
+        let anonymousFunction = { (result: Result<[Response], NetworkError>) in
             DispatchQueue.main.async {
-                self.result = fetchedResults.sorted { $0.creationDate > $1.creationDate }
-                self.result.sort { $0.isUrgent && !$1.isUrgent }
-                self.tableView.reloadData()
+                
+                switch result {
+                case .success(let fetchedResults):
+                    self.result = fetchedResults.sorted { $0.creationDate > $1.creationDate }
+                    self.result.sort { $0.isUrgent && !$1.isUrgent }
+                    self.tableView.reloadData()
+                case .failure(let failure):
+                    print(failure.localizedDescription)
+                }
+                
             }
         }
         return anonymousFunction
