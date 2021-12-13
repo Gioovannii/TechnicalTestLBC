@@ -30,7 +30,6 @@ final class AnnouncementsListVC: UIViewController {
         title = Constant.annoucementTitle
         navigationItem.searchController = searchController
         setupSearchBar()
-        
     }
     
     func configureTableView() {
@@ -49,7 +48,6 @@ final class AnnouncementsListVC: UIViewController {
     func fetchData() -> (Result<[Response], NetworkError>) -> () {
         let anonymousFunction = { (result: Result<[Response], NetworkError>) in
             DispatchQueue.main.async {
-                
                 switch result {
                 case .success(let fetchedResults):
                     self.result = fetchedResults.sorted { $0.creationDate > $1.creationDate }
@@ -58,7 +56,6 @@ final class AnnouncementsListVC: UIViewController {
                 case .failure(let failure):
                     print(failure.localizedDescription)
                 }
-                
             }
         }
         return anonymousFunction
@@ -73,10 +70,10 @@ final class AnnouncementsListVC: UIViewController {
         searchController.searchBar.delegate = self
     }
     
-    func filterContentForSearchText(searchText: String, scope: String = "Tout") {
+    func filterContentForSearchText(searchText: String, scope: String = "🔄") {
         filteredAnnouncement = result.filter ({ (category: Response) -> Bool in
             let categoryByID = AnnouncementsListVC.getCategoryImage(id: category.categoryID)
-            let doesCategoryMatch = (scope == "Tout") || (categoryByID == scope)
+            let doesCategoryMatch = (scope == "🔄") || (categoryByID == scope)
             
             if isSearchBarEmpty() {
                 return doesCategoryMatch
@@ -149,7 +146,15 @@ extension AnnouncementsListVC: UITableViewDataSource {
 
 extension AnnouncementsListVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let announcement = self.result[indexPath.row]
+        var response: Response
+        
+        if isFiltering() {
+            response = filteredAnnouncement[indexPath.row]
+        } else {
+            response = result[indexPath.row]
+        }
+        
+        let announcement = response
         let announcementDetailVC = AnnouncementDetailVC()
         announcementDetailVC.announcement = announcement
         self.present(announcementDetailVC, animated: true)
