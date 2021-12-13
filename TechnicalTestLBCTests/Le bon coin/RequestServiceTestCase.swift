@@ -38,9 +38,6 @@ final class RequestServiceTestCase: XCTestCase {
                 XCTFail("NoResponseShouldBeFound")
                 return
             }
-                    
-            
-        
         
         XCTAssertNotEqual(result, "Statue homme noir assis en plâtre polychrome")
             print(result)

@@ -15,21 +15,17 @@ struct FakeResponse {
 
 final class URLSessionFake: URLSession {
     
- //MARK: - Properties.
+    private let fakeResponse: FakeResponse
     
-    private var data: Data?
-    private var response: URLResponse?
-    private var error: Error?
-    
-    init(data: Data?, response: URLResponse?, error: Error?) {
-        self.data = data
-        self.response = response
-        self.error = error
+    init(configuration: URLSessionConfiguration = .default , fakeResponse: FakeResponse) {
+        self.fakeResponse = fakeResponse
+        super.init(configuration: configuration)
     }
     
     //MARK: - Override methods
     override func dataTask(with url: URL, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
-        let task = URLSessionDataTaskFake(data: data, urlResponse: response, responseError: error, completionHandler: completionHandler)
+        
+        let task = URLSessionDataTaskFake(data: fakeResponse.data, urlResponse: fakeResponse.response, responseError: fakeResponse.error, completionHandler: completionHandler)
         return task
     }
 }
@@ -41,6 +37,8 @@ final class URLSessionDataTaskFake: URLSessionDataTask {
     private var data: Data?
     private var urlResponse: URLResponse?
     private var responseError: Error?
+    
+    
     
     init(data: Data?, urlResponse: URLResponse?, responseError: Error?, completionHandler: ((Data?, URLResponse?, Error?) -> Void)?) {
         self.data = data
