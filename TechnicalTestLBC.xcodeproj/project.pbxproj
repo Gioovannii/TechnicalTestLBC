@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7B50A85E2765E714001772A2 /* Response.json in Resources */ = {isa = PBXBuildFile; fileRef = 7B50A85D2765E714001772A2 /* Response.json */; };
+		7B50A85E2765E714001772A2 /* LeBonCoin.json in Resources */ = {isa = PBXBuildFile; fileRef = 7B50A85D2765E714001772A2 /* LeBonCoin.json */; };
 		7B616FDE275EECAE00BEDBD5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B616FDD275EECAE00BEDBD5 /* AppDelegate.swift */; };
 		7B616FE0275EECAE00BEDBD5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B616FDF275EECAE00BEDBD5 /* SceneDelegate.swift */; };
 		7B616FE7275EECB000BEDBD5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B616FE6275EECB000BEDBD5 /* Assets.xcassets */; };
@@ -22,13 +22,13 @@
 		7B99209127609342006E3EA5 /* UIImageView + URLImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B99209027609342006E3EA5 /* UIImageView + URLImage.swift */; };
 		7BB598E22762EFA10098EBFD /* RequestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB598E12762EFA10098EBFD /* RequestService.swift */; };
 		7BB598E42762FB4C0098EBFD /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB598E32762FB4C0098EBFD /* PaddingLabel.swift */; };
-		7BB63DE027649C8000D56AA6 /* ResponseSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB63DDF27649C8000D56AA6 /* ResponseSession.swift */; };
 		7BB63DE22765C4F700D56AA6 /* URLSessionFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB63DE12765C4F700D56AA6 /* URLSessionFake.swift */; };
 		7BB63DE52765D8CA00D56AA6 /* FakeResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB63DE42765D8CA00D56AA6 /* FakeResponseData.swift */; };
 		7BCBB36D2761A0210098FD6C /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCBB36C2761A0210098FD6C /* Constant.swift */; };
 		7BCBB36F2761A1E90098FD6C /* AnnouncementDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCBB36E2761A1E90098FD6C /* AnnouncementDetailVC.swift */; };
 		7BCBB3762761E66C0098FD6C /* AnnouncementList + Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCBB3752761E66C0098FD6C /* AnnouncementList + Helper.swift */; };
 		7BE82CBE2766F0BD00F98561 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE82CBD2766F0BD00F98561 /* NetworkError.swift */; };
+		7BE82CC3276728BD00F98561 /* DateFormattertestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE82CC2276728BD00F98561 /* DateFormattertestCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,7 +43,7 @@
 
 /* Begin PBXFileReference section */
 		7B50A8532765E55A001772A2 /* TechnicalTestLBCTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TechnicalTestLBCTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		7B50A85D2765E714001772A2 /* Response.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Response.json; sourceTree = "<group>"; };
+		7B50A85D2765E714001772A2 /* LeBonCoin.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = LeBonCoin.json; sourceTree = "<group>"; };
 		7B616FDA275EECAE00BEDBD5 /* TechnicalTestLBC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TechnicalTestLBC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B616FDD275EECAE00BEDBD5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7B616FDF275EECAE00BEDBD5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -60,13 +60,13 @@
 		7B99209027609342006E3EA5 /* UIImageView + URLImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView + URLImage.swift"; sourceTree = "<group>"; };
 		7BB598E12762EFA10098EBFD /* RequestService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestService.swift; sourceTree = "<group>"; };
 		7BB598E32762FB4C0098EBFD /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
-		7BB63DDF27649C8000D56AA6 /* ResponseSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseSession.swift; sourceTree = "<group>"; };
 		7BB63DE12765C4F700D56AA6 /* URLSessionFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionFake.swift; sourceTree = "<group>"; };
 		7BB63DE42765D8CA00D56AA6 /* FakeResponseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeResponseData.swift; sourceTree = "<group>"; };
 		7BCBB36C2761A0210098FD6C /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		7BCBB36E2761A1E90098FD6C /* AnnouncementDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementDetailVC.swift; sourceTree = "<group>"; };
 		7BCBB3752761E66C0098FD6C /* AnnouncementList + Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnnouncementList + Helper.swift"; sourceTree = "<group>"; };
 		7BE82CBD2766F0BD00F98561 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		7BE82CC2276728BD00F98561 /* DateFormattertestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormattertestCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +90,7 @@
 		7B50A8542765E55B001772A2 /* TechnicalTestLBCTests */ = {
 			isa = PBXGroup;
 			children = (
+				7BE82CC12767289F00F98561 /* Extensions */,
 				7BB63DE32765CAA900D56AA6 /* Fake */,
 				7BB63DE82765DF6400D56AA6 /* Le bon coin */,
 			);
@@ -156,7 +157,6 @@
 			children = (
 				7BCBB36C2761A0210098FD6C /* Constant.swift */,
 				7B617015275F01F300BEDBD5 /* Response.swift */,
-				7BB63DDF27649C8000D56AA6 /* ResponseSession.swift */,
 				7BB598E12762EFA10098EBFD /* RequestService.swift */,
 			);
 			path = Model;
@@ -174,7 +174,7 @@
 		7BB63DE82765DF6400D56AA6 /* Le bon coin */ = {
 			isa = PBXGroup;
 			children = (
-				7B50A85D2765E714001772A2 /* Response.json */,
+				7B50A85D2765E714001772A2 /* LeBonCoin.json */,
 				7B6E4A182765E83E006378C1 /* RequestServiceTestCase.swift */,
 			);
 			path = "Le bon coin";
@@ -204,6 +204,14 @@
 				7BB598E32762FB4C0098EBFD /* PaddingLabel.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		7BE82CC12767289F00F98561 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				7BE82CC2276728BD00F98561 /* DateFormattertestCase.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -288,7 +296,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7B50A85E2765E714001772A2 /* Response.json in Resources */,
+				7B50A85E2765E714001772A2 /* LeBonCoin.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,6 +316,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7BE82CC3276728BD00F98561 /* DateFormattertestCase.swift in Sources */,
 				7B6E4A192765E83E006378C1 /* RequestServiceTestCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -323,7 +332,6 @@
 				7BCBB3762761E66C0098FD6C /* AnnouncementList + Helper.swift in Sources */,
 				7B99208F27605753006E3EA5 /* Date formatter + String.swift in Sources */,
 				7B616FE0275EECAE00BEDBD5 /* SceneDelegate.swift in Sources */,
-				7BB63DE027649C8000D56AA6 /* ResponseSession.swift in Sources */,
 				7B99208D27605343006E3EA5 /* Double + Ext.swift in Sources */,
 				7BB598E42762FB4C0098EBFD /* PaddingLabel.swift in Sources */,
 				7B617016275F01F300BEDBD5 /* Response.swift in Sources */,
