@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Handle string spelling
 struct Constant {
     static let annoucementTitle = "Liste d'annonce"
     

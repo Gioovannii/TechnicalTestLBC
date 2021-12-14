@@ -52,7 +52,7 @@ class AnnouncementCell: UITableViewCell {
         thumbImageView.layer.cornerRadius = 10
         thumbImageView.layer.borderWidth = 1
         thumbImageView.layer.borderColor = UIColor.gray.cgColor
-        thumbImageView.clipsToBounds = true
+        thumbImageView.clipsToBounds                                                      = true
     }
     
     func setupNameLabel() {
@@ -86,7 +86,7 @@ class AnnouncementCell: UITableViewCell {
         addSubview(categoryLabel)
         
         categoryLabel.translatesAutoresizingMaskIntoConstraints                                         = false
-        categoryLabel.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: 5).isActive                  = true
+        categoryLabel.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: 5).isActive     = true
         categoryLabel.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: 5).isActive = true
         categoryLabel.backgroundColor = .orange
         categoryLabel.paddingTop = 5
@@ -95,15 +95,14 @@ class AnnouncementCell: UITableViewCell {
         categoryLabel.paddingBottom = 5
         categoryLabel.layer.cornerRadius = 5
         categoryLabel.layer.masksToBounds = true
-        
     }
     
     func setupCategoryNameLabel() {
         addSubview(categoryNameLabel)
         
-        categoryNameLabel.translatesAutoresizingMaskIntoConstraints                                       = false
-        categoryNameLabel.heightAnchor.constraint(equalTo: categoryLabel.heightAnchor).isActive               = true
-        categoryNameLabel.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: 5).isActive = true
+        categoryNameLabel.translatesAutoresizingMaskIntoConstraints                                               = false
+        categoryNameLabel.heightAnchor.constraint(equalTo: categoryLabel.heightAnchor).isActive                   = true
+        categoryNameLabel.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: 5).isActive           = true
         categoryNameLabel.trailingAnchor.constraint(equalTo: categoryLabel.leadingAnchor, constant: -10).isActive = true
     }
 }

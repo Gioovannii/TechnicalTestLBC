@@ -7,23 +7,22 @@
 
 import Foundation
 
-protocol RequestTestService {
-    func fetchData(onCompletion: @escaping (Result<[Response], NetworkError>) -> Void)
-}
-
-final class RequestService: RequestTestService {
+final class RequestService {
     
     private let session: URLSession
+    private var task: URLSessionDataTask?
     init(session: URLSession = URLSession(configuration: .default)) {
         self.session = session
     }
     
+    /// Fetch data with result type which use Network error to get different description errors
     func fetchData(onCompletion: @escaping (Result<[Response], NetworkError>) -> Void) {
         guard let url = URL(string: "https://raw.githubusercontent.com/leboncoin/paperclip/master/listing.json") else {
             print("Invalid URL")
             return
         }
-        session.dataTask(with: url) { (data, response, error) in
+        task?.cancel()
+        task = session.dataTask(with: url) { (data, response, error) in
             guard let data = data else {
 
                 onCompletion(.failure(.noData))
@@ -45,6 +44,6 @@ final class RequestService: RequestTestService {
             
             onCompletion(.success(decodedResponse))
         }
-        .resume()
+        task?.resume()
     }
 }

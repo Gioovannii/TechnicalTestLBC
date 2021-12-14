@@ -10,29 +10,34 @@ import UIKit
 final class AnnouncementsListVC: UIViewController {
     private let requestService = RequestService()
     
-    var tableView = UITableView()
-    var searchController = UISearchController(searchResultsController: nil)
+    private var tableView = UITableView()
+    private var searchController = UISearchController(searchResultsController: nil)
 
-    var result = [Response]()
-    var filteredAnnouncement = [Response]()
+    private var result = [Response]()
+    private var filteredAnnouncement = [Response]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavigationView()
+        setTableViewDelegates()
         configureTableView()
         
         requestService.fetchData(onCompletion: fetchData())
-        configureTableView()
-        setTableViewDelegates()
     }
     
-    func configureNavigationView() {
+    private func configureNavigationView() {
         title = Constant.annoucementTitle
         navigationItem.searchController = searchController
         setupSearchBar()
     }
     
-    func configureTableView() {
+    private func setTableViewDelegates() {
+        tableView.dataSource = self
+        tableView.delegate = self
+    }
+    
+    
+    private func configureTableView() {
         view.addSubview(tableView)
         setTableViewDelegates()
         tableView.rowHeight = 100
@@ -40,12 +45,9 @@ final class AnnouncementsListVC: UIViewController {
         tableView.pin(to: view)
     }
     
-    func setTableViewDelegates() {
-        tableView.dataSource = self
-        tableView.delegate = self
-    }
+   
     
-    func fetchData() -> (Result<[Response], NetworkError>) -> () {
+    private func fetchData() -> (Result<[Response], NetworkError>) -> () {
         let anonymousFunction = { (result: Result<[Response], NetworkError>) in
             DispatchQueue.main.async {
                 switch result {
@@ -61,7 +63,7 @@ final class AnnouncementsListVC: UIViewController {
         return anonymousFunction
     }
     
-    func setupSearchBar() {
+    private func setupSearchBar() {
         searchController.searchResultsUpdater = self
         searchController.searchBar.placeholder = "Choisissez une categorie... "
         searchController.searchBar.sizeToFit()
@@ -70,7 +72,7 @@ final class AnnouncementsListVC: UIViewController {
         searchController.searchBar.delegate = self
     }
     
-    func filterContentForSearchText(searchText: String, scope: String = "🔄") {
+    private func filterContentForSearchText(searchText: String, scope: String = "🔄") {
         filteredAnnouncement = result.filter ({ (category: Response) -> Bool in
             let categoryByID = AnnouncementsListVC.getCategoryImage(id: category.categoryID)
             let doesCategoryMatch = (scope == "🔄") || (categoryByID == scope)
@@ -84,11 +86,11 @@ final class AnnouncementsListVC: UIViewController {
         tableView.reloadData()
     }
     
-    func isSearchBarEmpty() -> Bool {
+    private func isSearchBarEmpty() -> Bool {
         return searchController.searchBar.text?.isEmpty ?? true
     }
     
-    func isFiltering() -> Bool {
+    private func isFiltering() -> Bool {
         let searchBarScopeIsFiltering = searchController.searchBar.selectedScopeButtonIndex != 0
         return searchController.isActive && (!isSearchBarEmpty() || searchBarScopeIsFiltering)
     }
@@ -98,7 +100,9 @@ final class AnnouncementsListVC: UIViewController {
 
 extension AnnouncementsListVC: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
-        filterContentForSearchText(searchText: searchBar.text!, scope: searchBar.scopeButtonTitles![selectedScope])
+        guard let searchText = searchController.searchBar.text else { return }
+        guard let scopeButtonTitles = searchBar.scopeButtonTitles else { return }
+        filterContentForSearchText(searchText: searchText, scope: scopeButtonTitles[selectedScope])
     }
 }
 
@@ -106,13 +110,14 @@ extension AnnouncementsListVC: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         let searchBar = searchController.searchBar
         let scope = searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex]
-        
-        filterContentForSearchText(searchText: searchController.searchBar.text!, scope: scope)
+        guard let searchText = searchController.searchBar.text else { return }
+        filterContentForSearchText(searchText: searchText, scope: scope)
     }
 }
 
 
-// MARK: - Table view
+
+// MARK: - TableView DataSource
 
 extension AnnouncementsListVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -143,6 +148,8 @@ extension AnnouncementsListVC: UITableViewDataSource {
         return cell
     }
 }
+
+// MARK: - Delegate
 
 extension AnnouncementsListVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

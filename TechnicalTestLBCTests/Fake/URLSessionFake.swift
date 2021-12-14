@@ -11,15 +11,16 @@ struct FakeResponse {
     var data: Data?
     var response: HTTPURLResponse?
     var error: Error?
+    
 }
 
 final class URLSessionFake: URLSession {
     
     private let fakeResponse: FakeResponse
     
-    init(configuration: URLSessionConfiguration = .default , fakeResponse: FakeResponse) {
+    init(configuration: URLSessionConfiguration = .default, fakeResponse: FakeResponse) {
         self.fakeResponse = fakeResponse
-        super.init(configuration: configuration)
+
     }
     
     //MARK: - Override methods

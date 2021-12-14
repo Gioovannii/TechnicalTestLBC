@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Handle different errors
 enum NetworkError: Error {
     case noData
     case incorrectResponse
