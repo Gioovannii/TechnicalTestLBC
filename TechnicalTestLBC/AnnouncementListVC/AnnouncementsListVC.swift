@@ -22,6 +22,7 @@ final class AnnouncementsListVC: UIViewController {
         setTableViewDelegates()
         configureTableView()
         
+        requestService.categories = requestService.getCategories()
         requestService.fetchData(onCompletion: fetchData())
     }
     
@@ -144,7 +145,7 @@ extension AnnouncementsListVC: UITableViewDataSource {
         cell.priceLabel.text = "\(response.price.stringWithoutZeroFraction) €"
         cell.isUrgentLabel.text = response.isUrgent == true ? "Urgent" : ""
         cell.categoryLabel.text = AnnouncementsListVC.getCategoryImage(id: response.categoryID)
-        cell.categoryNameLabel.text = AnnouncementsListVC.getCategoryDescription(id: response.categoryID)
+        cell.categoryNameLabel.text = requestService.categories[response.categoryID - 1].name
         return cell
     }
 }
