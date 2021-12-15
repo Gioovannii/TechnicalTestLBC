@@ -18,9 +18,8 @@ final class URLSessionFake: URLSession {
     
     private let fakeResponse: FakeResponse
     
-    init(configuration: URLSessionConfiguration = .default, fakeResponse: FakeResponse) {
+    init(fakeResponse: FakeResponse) {
         self.fakeResponse = fakeResponse
-
     }
     
     //MARK: - Override methods
