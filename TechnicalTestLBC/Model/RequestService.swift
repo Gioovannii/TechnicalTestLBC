@@ -9,6 +9,8 @@ import Foundation
 
 final class RequestService {
     
+    var categories = [Category]()
+    
     private let session: URLSession
     private var task: URLSessionDataTask?
     init(session: URLSession = URLSession(configuration: .default)) {
@@ -24,7 +26,6 @@ final class RequestService {
         task?.cancel()
         task = session.dataTask(with: url) { (data, response, error) in
             guard let data = data else {
-
                 onCompletion(.failure(.noData))
                 print("Data was nil")
                 return
@@ -45,5 +46,23 @@ final class RequestService {
             onCompletion(.success(decodedResponse))
         }
         task?.resume()
+    }
+    
+    /// Load categories at Launch with decodable struct from json file
+    func getCategories() -> [Category] {
+        let bundle = Bundle(for: RequestService.self)
+        guard let url = bundle.url(forResource: "Categories", withExtension: "json") else {
+            print("Cannot locate url from bundle")
+            return []
+        }
+        
+        guard let data = try? Data(contentsOf: url) else { return [] }
+        
+        guard let decodedData = try? JSONDecoder().decode([Category].self, from: data) else {
+            print("Cannot decode data")
+            return []
+        }
+        
+        return decodedData
     }
 }
